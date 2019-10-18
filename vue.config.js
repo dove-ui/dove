@@ -1,4 +1,4 @@
-const path = require('path')
+// const path = require('path')
 
 module.exports = {
   publicPath: "/",
@@ -31,14 +31,36 @@ module.exports = {
     port: '8080',
     open: false
   },
-  // configureWebpack: { // webpack 配置
-  //   resolve: {
-  //     extensions: ['.md'],
-  //     modules: [
-  //       // path.resolve(__dirname, 'src'),
-  //       // path.resolve(__dirname, 'docs')
-  //     ]
-  //   }
-  // },
-  // chainWebpack (config) {}
+  configureWebpack: { // webpack 配置
+    resolve: {
+      extensions: ['.md'],
+      alias: {
+        'vue$': 'vue/dist/vue.esm.js' // esm 版本支持template模板编译
+      }
+    }
+  },
+  chainWebpack (config) {
+
+    // see: https://github.com/neutrinojs/webpack-chain
+    config.module
+      .rule('dotmd')
+      .test(/\.md$/)
+      .use('vue-loader')
+      .loader('vue-loader')
+      .options({
+        ...(config.module.rules.get('vue').uses.get('vue-loader').get('options') || null) // 与 vue-loader 配置保持一致
+      })
+      .end()
+      .use('vue-dotmd-loader')
+      .loader('vue-dotmd-loader')
+      .options({
+        dest: true,
+        markdown: {
+          options: {
+            html: true
+          }
+        }
+      })
+      .end()
+  }
 }
