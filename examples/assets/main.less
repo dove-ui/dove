@@ -6,6 +6,26 @@ body {
   color: #1a1a1a;
 }
 
+.text-center {
+  text-align: center;
+}
+
+.clearfix {
+  &::before,
+  &::after {
+    content: "";
+    display: table;
+    clear: both;
+  }
+}
+
+.page-container {
+  .page-content {
+    width: 760px;
+    margin: 0 auto;
+  }
+}
+
 .wellcome {
   text-align: center;
   padding: 50px;
@@ -32,5 +52,115 @@ body {
     .link {
       display: inline-block;
     }
+  }
+}
+
+.site-footer {
+  margin-top: 100px;
+  margin-bottom: 50px;
+
+  .line {
+    height: 1px;
+    background-color: #f6f8fa;
+    margin-bottom: 15px;
+  }
+
+  .links {
+    margin: 30px 0;
+    padding: 0;
+    font-size: 13px;
+    list-style: none;
+    color: #586069;
+    font-weight: 400;
+    line-height: 30px;
+
+    li {
+      display: inline-block;
+
+      & + li {
+        margin-left: 15px;
+      }
+    }
+
+    a {
+      text-decoration: none;
+      color: #0066D6;
+    }
+  }
+}
+
+.docs-layout {
+  width: 1020px;
+  margin: 0 auto;
+
+  .header {
+    padding: 10px 15px;
+    font-size: 20px;
+    font-weight: 300;
+
+    .tag {
+      color: #1293f9;
+    }
+  }
+  .docs-sidebar {
+    float: left;
+    padding: 15px;
+    box-sizing: border-box;
+  }
+
+  .docs-container {
+    box-sizing: border-box;
+    overflow: auto;
+    padding: 15px;
+  }
+}
+
+.navs-box {
+  width: 200px;
+  // border: solid 1px #EAEEFB;
+  // border-radius: 5px;
+  // background-color: #FAFAFA;
+}
+.navs {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+
+  .nav-item {
+    .nav {
+      padding: 10px 15px;
+      display: block;
+      width: 100%;
+      text-decoration: none;
+      box-sizing: border-box;
+      color: #282C34;
+      font-size: 14px;
+      font-weight: 300;
+
+      &:hover {
+        background-color: #e3f2fd;
+        border-radius: 5px;
+      }
+    }
+    .nav-title {
+      font-size: 18px;
+      font-weight: 400;
+      padding: 10px 15px;
+      margin-bottom: 10px;
+      display: block;
+      box-sizing: border-box;
+    }
+    .nav-group-title {
+      font-size: 12px;
+      padding: 5px 15px;
+      color: #b6bdce;
+    }
+  }
+
+  .nav-line {
+    display: block;
+    height: 1px;
+    background-color: #e7e8ea;
+    margin: 10px 15px;
   }
 }

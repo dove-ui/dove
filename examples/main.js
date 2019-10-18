@@ -6,7 +6,7 @@ import DoveUI from '../src'
 import "vue-dotmd-loader/dist/css/default.css"
 import 'github-markdown-css/github-markdown.css'
 import 'highlight.js/styles/color-brewer.css'
-import 'vue-dotmd-loader/src/docs.css'
+// import 'vue-dotmd-loader/src/docs.css'
 import './assets/main.less'
 import pkg from '../package.json'
 
@@ -20,7 +20,12 @@ const app = new Vue({
   router,
   data () {
     return { pkg }
-  }
+  },
+  computed: {
+    repository () {
+      return this.pkg.repository.url.replace('git+', '')
+    }
+  },
 }).$mount('#app')
 
 window.app = app
